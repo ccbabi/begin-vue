@@ -14,7 +14,8 @@ module.exports = {
   },
   plugins: [].concat(commonPlugin, htmlPlugin),
   resolve: {
-    extensions: ['.js', '.vue', '.json', '.css', '.less', '.styl']
+    extensions: ['.js', '.vue', '.json', '.css', '.less', '.styl'],
+    modules: [PATHS.SRC_PATH, 'node_modules']
   },
   performance: {
     hints: false

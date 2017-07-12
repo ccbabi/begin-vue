@@ -21,6 +21,10 @@ module.exports = {
       }
     })
   ].concat(commonPlugin, htmlPlugin),
+  resolve: {
+    extensions: ['.js', '.vue', '.json', '.css', '.less', '.styl'],
+    modules: [PATHS.SRC_PATH, 'node_modules']
+  },
   devtool: 'source-map',
   performance: {
     hints: false

@@ -1,14 +1,21 @@
 <template lang="pug">
-  p {{status}}
+  div
+    p {{status}}
+    img(src="../../assets/images/logo.png", alt="")
+    Demo
 </template>
 
 <script>
+import Demo from 'components/demo'
 export default {
   name: 'home',
   data () {
     return {
       status: 'vue is works!'
     }
+  },
+  components: {
+    Demo
   }
 }
 </script>
