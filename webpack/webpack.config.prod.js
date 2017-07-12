@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const PATHS = require('../config/paths')
 const htmlPlugin = require('./htmlPlugin')
-const cssRule = require('./cssRule')
+const rules = require('./rules')
 const commonPlugin = require('./commonPlugin')
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     filename: 'js/[name]-[chunkhash].js'
   },
   module: {
-    rules: [].concat(cssRule)
+    rules: [].concat(rules)
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
