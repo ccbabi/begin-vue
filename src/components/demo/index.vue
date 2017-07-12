@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .demo {
   background: yellow;
 }

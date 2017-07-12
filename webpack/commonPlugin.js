@@ -1,6 +1,8 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+console.log(process.env.NODE_ENV)
+
 module.exports = [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
@@ -15,7 +17,7 @@ module.exports = [
     $: 'jquery'
   }),
   new ExtractTextPlugin({
-    filename: 'css/[name]-[contenthash].css',
+    filename: 'css/index-[contenthash:7].css',
     disable: process.env.NODE_ENV === 'development'
   }),
   new webpack.DefinePlugin({

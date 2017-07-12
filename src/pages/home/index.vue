@@ -2,11 +2,12 @@
   div
     p {{status}}
     img(src="../../assets/images/logo.png", alt="")
-    Demo
+    demo
 </template>
 
 <script>
-import Demo from 'components/demo'
+import demo from 'components/demo'
+// import './style.css'
 export default {
   name: 'home',
   data () {
@@ -15,12 +16,12 @@ export default {
     }
   },
   components: {
-    Demo
+    demo
   }
 }
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
 p
   color: green
 </style>

@@ -1,4 +1,6 @@
+const div = document.createElement('div')
+document.body.insertAdjacentElement('afterbegin', div)
+
 export default () => {
-  const div = document.createElement('div')
-  return document.body.insertAdjacentElement('afterbegin', div)
+  return div
 }

@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const PATHS = require('../config/paths')
 const htmlPlugin = require('./htmlPlugin')
 const rules = require('./rules')
@@ -12,7 +13,9 @@ module.exports = {
   module: {
     rules: [].concat(rules)
   },
-  plugins: [].concat(commonPlugin, htmlPlugin),
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ].concat(commonPlugin, htmlPlugin),
   resolve: {
     extensions: ['.js', '.vue', '.json', '.css', '.less', '.styl'],
     modules: [PATHS.SRC_PATH, 'node_modules']
@@ -22,7 +25,9 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {
-    contentBase: PATHS.DIST_PATH
+    contentBase: PATHS.DIST_PATH,
+    inline: true,
+    hot: true
     // noInfo: true
   }
 }
