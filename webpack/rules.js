@@ -80,7 +80,8 @@ module.exports = [
       cssModules: {
         localIdentName: isDev ? '[local]--[hash:base64:7]' : '[hash:base64:7]',
         cameCase: true
-      }
+      },
+      extractCSS: true
     }
   },
   {
