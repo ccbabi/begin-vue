@@ -1,15 +1,22 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = [
   {
     test: /\.css$/,
     use: ExtractTextPlugin.extract({
-      use: {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true
+      use: [
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'postcss-loader'
         }
-      },
+      ],
       fallback: 'style-loader'
     })
   },
@@ -20,8 +27,12 @@ module.exports = [
         {
           loader: 'css-loader',
           options: {
+            importLoaders: 1,
             sourceMap: true
           }
+        },
+        {
+          loader: 'postcss-loader'
         },
         {
           loader: 'less-loader',
@@ -40,8 +51,12 @@ module.exports = [
         {
           loader: 'css-loader',
           options: {
+            importLoaders: 1,
             sourceMap: true
           }
+        },
+        {
+          loader: 'postcss-loader'
         },
         {
           loader: 'styl-loader',
@@ -60,7 +75,13 @@ module.exports = [
   },
   {
     test: /\.vue$/,
-    use: ['vue-loader']
+    loader: 'vue-loader',
+    options: {
+      cssModules: {
+        localIdentName: isDev ? '[local]--[hash:base64:7]' : '[hash:base64:7]',
+        cameCase: true
+      }
+    }
   },
   {
     test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
@@ -69,7 +90,7 @@ module.exports = [
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'images/[name].[ext]?[hash:7]'
+          name: 'img/[name].[ext]?[hash:7]'
         }
       }
     ]

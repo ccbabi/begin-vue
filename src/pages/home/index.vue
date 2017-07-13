@@ -1,13 +1,12 @@
 <template lang="pug">
   div
     p {{status}}
-    img(src="../../assets/images/logo.png", alt="")
+    img(src="../../common/imgs/logo.png", alt="")
     demo
 </template>
 
 <script>
 import demo from 'components/demo'
-// import './style.css'
 export default {
   name: 'home',
   data () {
@@ -23,5 +22,6 @@ export default {
 
 <style lang="stylus">
 p
-  color: green
+  color green
+  display flex
 </style>

@@ -14,7 +14,7 @@ module.exports = [
     name: 'manifest'
   }),
   new webpack.ProvidePlugin({
-    $: 'jquery'
+    // $: 'jquery'
   }),
   new ExtractTextPlugin({
     filename: 'css/index-[contenthash:7].css',

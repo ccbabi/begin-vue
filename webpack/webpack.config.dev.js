@@ -27,7 +27,7 @@ module.exports = {
   devServer: {
     contentBase: PATHS.DIST_PATH,
     inline: true,
-    hot: true
-    // noInfo: true
+    hot: true,
+    noInfo: true
   }
 }

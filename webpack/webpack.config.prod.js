@@ -22,7 +22,7 @@ module.exports = {
     })
   ].concat(commonPlugin, htmlPlugin),
   resolve: {
-    extensions: ['.js', '.vue', '.json', '.css', '.less', '.styl'],
+    extensions: ['.vue', '.js', '.json', '.styl', '.less', '.css'],
     modules: [PATHS.SRC_PATH, 'node_modules']
   },
   devtool: 'source-map',
