@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     p {{status}}
-    img(src="../../common/imgs/logo.png", alt="")
+    img(src="../../assets/imgs/logo.png", alt="")
     demo
 </template>
 
@@ -10,7 +10,7 @@ import demo from 'components/demo'
 export default {
   name: 'home',
   data () {
-    return {
+    return
       status: 'vue is works!'
     }
   },
@@ -18,7 +18,7 @@ export default {
     demo
   }
 }
-</script
+</script>
 
 <style lang="stylus">
 p

@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import mount from 'common/models/mount'
+import mount from 'common/mount'
 import Home from 'pages/home'
-import 'common/styles'
+import 'assets/styles'
 
 new Vue({ // eslint-disable-line no-new
-  el: mount(),
+  el: mount,
   render: h => h(Home)
 })
