@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="$style.demo")
-    button(v-on:click="sw") 切换2
+    button(v-on:click="sw") 切换
     div
       p(v-if="current===1")
         span 1
@@ -18,7 +18,7 @@ export default {
     }
   },
   methods: {
-    sw() {
+    sw () {
       this.current = (this.current + 1) % 4 || 1
     }
   }
@@ -27,6 +27,6 @@ export default {
 
 <style lang="less" module>
 .demo {
-  background: yellow;
+  background: yellow
 }
 </style>

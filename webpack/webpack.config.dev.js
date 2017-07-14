@@ -25,9 +25,12 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {
+    port: 3721,
+    host: '0.0.0.0',
     contentBase: PATHS.DIST_PATH,
     inline: true,
     hot: true,
-    noInfo: true
+    noInfo: true,
+    historyApiFallback: true
   }
 }

@@ -10,6 +10,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.4",
+    "eslint-plugin-html": "^3.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.28.0",
@@ -32,8 +33,9 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.dev.js --open",
     "prebuild": "yarn run clean",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.js",
-    "clean": "rimraf dist/*"
+    "build": "yarn run lint && cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.js",
+    "clean": "rimraf dist/*",
+    "lint": "standard --plugin html **/*.{js,vue}"
   },
   "dependencies": {
     "vue": "^2.3.4"
