@@ -10,7 +10,8 @@ module.exports = [
           loader: 'css-loader',
           options: {
             importLoaders: 1,
-            sourceMap: true
+            sourceMap: true,
+            minimize: !isDev
           }
         },
         {
@@ -28,7 +29,8 @@ module.exports = [
           loader: 'css-loader',
           options: {
             importLoaders: 1,
-            sourceMap: true
+            sourceMap: true,
+            minimize: !isDev
           }
         },
         {
@@ -52,7 +54,8 @@ module.exports = [
           loader: 'css-loader',
           options: {
             importLoaders: 1,
-            sourceMap: true
+            sourceMap: true,
+            minimize: !isDev
           }
         },
         {
