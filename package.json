@@ -35,7 +35,8 @@
     "prebuild": "yarn run clean",
     "build": "yarn run lint && cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.js",
     "clean": "rimraf dist/*",
-    "lint": "standard --plugin html **/*.{js,vue}"
+    "lint": "standard --plugin html **/*.{js,vue}",
+    "fix": "standard --fix --plugin html **/*.{js,vue}"
   },
   "dependencies": {
     "vue": "^2.3.4"

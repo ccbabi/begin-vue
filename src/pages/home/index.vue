@@ -18,7 +18,7 @@ export default {
     demo
   }
 }
-</script>
+</script
 
 <style lang="stylus">
 p
