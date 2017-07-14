@@ -5,7 +5,7 @@ const rules = require('./rules')
 const commonPlugin = require('./commonPlugin')
 
 module.exports = {
-  entry: PATHS.ENTRY_PATH,
+  entry: ['babel-polyfill', PATHS.ENTRY_PATH],
   output: {
     path: PATHS.DIST_PATH,
     filename: 'js/[name].bundle.js'

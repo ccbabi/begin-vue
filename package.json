@@ -42,9 +42,14 @@
     "test": "mocha"
   },
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "vue": "^2.3.4"
   },
   "standard": {
-    "globals": ["describe", "it", "expect"]
+    "globals": [
+      "describe",
+      "it",
+      "expect"
+    ]
   }
 }
