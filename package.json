@@ -43,6 +43,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
     "vue": "^2.3.4"
   },
