@@ -10,7 +10,7 @@ import demo from 'components/demo'
 export default {
   name: 'home',
   data () {
-    return
+    return {
       status: 'vue is works!'
     }
   },
