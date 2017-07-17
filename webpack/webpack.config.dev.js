@@ -31,19 +31,6 @@ module.exports = {
     inline: true,
     hot: true,
     noInfo: true,
-    historyApiFallback: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        secure: false,
-        bypass (req, res, proxyOptions) {
-          console.log(req.url)
-          if (req.headers.accept.indexOf('html') !== -1) {
-            console.log('Skipping proxy for browser request.')
-            return '/index.html'
-          }
-        }
-      }
-    }
+    historyApiFallback: true
   }
 }

@@ -8,7 +8,7 @@ module.exports = {
   entry: PATHS.ENTRY_PATH,
   output: {
     path: PATHS.DIST_PATH,
-    filename: 'js/[name]-[chunkhash:7].js'
+    filename: 'js/[name].[chunkhash:7].js'
   },
   module: {
     rules: [].concat(rules)

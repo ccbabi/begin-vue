@@ -14,7 +14,7 @@ module.exports = [
   new webpack.ProvidePlugin({
   }),
   new ExtractTextPlugin({
-    filename: 'css/index-[contenthash:7].css',
+    filename: 'css/index.[contenthash:7].css',
     disable: process.env.NODE_ENV === 'development'
   }),
   new webpack.DefinePlugin({

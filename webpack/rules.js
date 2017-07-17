@@ -88,13 +88,25 @@ module.exports = [
     }
   },
   {
-    test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+    test: /\.(png|jpeg?|gif|svg)(\?.*)?$/,
     use: [
       {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'img/[name].[ext]?[hash:7]'
+          name: 'img/[name].[hash:7].[ext]'
+        }
+      }
+    ]
+  },
+  {
+    test: /\.(eot|ttf|woff|woff2?)(\?.*)?$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'font/[name].[hash:7].[ext]'
         }
       }
     ]
