@@ -1,24 +1,17 @@
-## 使用
-1. 安装依赖
+## Begin
 ```
-yarn install
-```
-
-2. 启动开发
-```
-yarn start
+$ yarn install
+$ yarn start
 ```
 
-3. 编译打包
-```
-yarn run build
-```
+> When you start or build, will automatically detect you code.
 
-> 在启动和编译时，会自动帮你格式化代码、检测代码语法错误
+## Configuration vscode
 
-### 开发时，自动提示错误配置
-1. 推荐使用`vscode`编辑器，安装`vscode-standardjs`插件。
-2. 菜单：code -> 首选项 -> 设置，复制下面代码到`settings.json`中
+1. Installation `vscode-standardjs`
+> Ctrl + P, press enter `ext install vscode-standardjs`
+
+2. `settings.json`
 ```
  "standard.validate": [
      "javascript",
