@@ -14,7 +14,7 @@
 
 <% if(htmlWebpackPlugin.options.window) { %>
 <script>
-  var pageCfg = {}
+  var pageCfg = new Object();
   <% for (var property in htmlWebpackPlugin.options.window) { %>
   pageCfg['<%= property %>'] = JSON.parse('<%= JSON.stringify(htmlWebpackPlugin.options.window[property]) %>');
   <% } %>

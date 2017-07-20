@@ -19,7 +19,6 @@
     "less-loader": "^4.0.4",
     "mocha": "^3.4.2",
     "postcss-cssnext": "^3.0.2",
-    "postcss-flexible": "^0.4.1",
     "postcss-loader": "^2.0.6",
     "pug": "^2.0.0-rc.2",
     "rimraf": "^2.6.1",
@@ -44,7 +43,6 @@
     "test": "mocha"
   },
   "dependencies": {
-    "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
     "vue": "^2.3.4"
   },
@@ -53,6 +51,9 @@
       "describe",
       "it",
       "expect"
+    ],
+    "ignore": [
+      "dist"
     ]
   }
 }

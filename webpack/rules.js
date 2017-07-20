@@ -15,7 +15,10 @@ module.exports = [
           }
         },
         {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true
+          }
         }
       ],
       fallback: 'style-loader'
@@ -34,7 +37,10 @@ module.exports = [
           }
         },
         {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true
+          }
         },
         {
           loader: 'less-loader',
@@ -59,7 +65,10 @@ module.exports = [
           }
         },
         {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true
+          }
         },
         {
           loader: 'styl-loader',
@@ -88,13 +97,13 @@ module.exports = [
     }
   },
   {
-    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+    test: /\.(png|jpe?g|gif|svg)(\?.+)?$/,
     use: [
       {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'img/[name].[hash:7].[ext]'
+          name: 'img/[name].[ext]?.[hash:7]'
         }
       }
     ]
@@ -106,7 +115,7 @@ module.exports = [
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'font/[name].[hash:7].[ext]'
+          name: 'font/[name].[ext]?[hash:7]'
         }
       }
     ]

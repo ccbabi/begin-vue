@@ -1,6 +1,6 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const PATHS = require('../config/paths')
+const PATHS = require('./paths')
 const win = require('../config/window')
 
 const plugins = [
@@ -9,7 +9,7 @@ const plugins = [
     filename: 'index.html',
     template: resolve(PATHS.SRC_PATH, 'templates/index.ejs'),
     favicon: resolve(PATHS.SRC_PATH, 'assets/imgs/favicon.ico'),
-    title: '51talk',
+    title: 'begin-vue',
     window: win,
     inject: false,
     minify: {

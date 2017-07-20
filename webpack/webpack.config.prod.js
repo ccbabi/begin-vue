@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const PATHS = require('../config/paths')
+const PATHS = require('./paths')
 const htmlPlugin = require('./htmlPlugin')
 const rules = require('./rules')
 const commonPlugin = require('./commonPlugin')
@@ -8,7 +8,7 @@ module.exports = {
   entry: PATHS.ENTRY_PATH,
   output: {
     path: PATHS.DIST_PATH,
-    filename: 'js/[name].[chunkhash:7].js'
+    filename: 'js/[name].js?.[chunkhash:7]'
   },
   module: {
     rules: [].concat(rules)

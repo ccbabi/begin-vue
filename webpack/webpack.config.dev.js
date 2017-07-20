@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const PATHS = require('../config/paths')
+const PATHS = require('./paths')
 const htmlPlugin = require('./htmlPlugin')
 const rules = require('./rules')
 const commonPlugin = require('./commonPlugin')
@@ -17,7 +17,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ].concat(commonPlugin, htmlPlugin),
   resolve: {
-    extensions: ['.js', '.vue', '.json', '.css', '.less', '.styl'],
+    extensions: ['.vue', '.js', '.json', '.styl', '.less', '.css'],
     modules: [PATHS.SRC_PATH, 'node_modules']
   },
   performance: {
