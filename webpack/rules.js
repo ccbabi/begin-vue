@@ -102,7 +102,7 @@ module.exports = [
       {
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 10,
           name: 'img/[name].[ext]?.[hash:7]'
         }
       }
