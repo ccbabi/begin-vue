@@ -3,6 +3,7 @@ const PATHS = require('./paths')
 const htmlPlugin = require('./htmlPlugin')
 const rules = require('./rules')
 const commonPlugin = require('./commonPlugin')
+const host = require('./host')
 
 module.exports = {
   entry: ['babel-polyfill', PATHS.ENTRY_PATH],
@@ -25,7 +26,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {
-    // host: '0.0.0.0',
+    host,
     port: 3721,
     contentBase: PATHS.DIST_PATH,
     inline: true,
