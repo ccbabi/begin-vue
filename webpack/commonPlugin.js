@@ -1,7 +1,7 @@
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
-module.exports = [
+export default [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: function (module) {

@@ -1,11 +1,11 @@
-const webpack = require('webpack')
-const PATHS = require('./paths')
-const htmlPlugin = require('./htmlPlugin')
-const rules = require('./rules')
-const commonPlugin = require('./commonPlugin')
-const host = require('./host')
+import webpack from 'webpack'
+import PATHS from './paths'
+import htmlPlugin from './htmlPlugin'
+import rules from './rules'
+import commonPlugin from './commonPlugin'
+import host from './host'
 
-module.exports = {
+export default {
   entry: ['babel-polyfill', PATHS.ENTRY_PATH],
   output: {
     path: PATHS.DIST_PATH,

@@ -1,4 +1,5 @@
-const os = require('os')
+import os from 'os'
+
 const ifaces = os.networkInterfaces()
 let host = null
 
@@ -14,4 +15,4 @@ Object.keys(ifaces).some(dev => {
   })
 })
 
-module.exports = host || '127.0.0.1'
+export default host || '127.0.0.1'

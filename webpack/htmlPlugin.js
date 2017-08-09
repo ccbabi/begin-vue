@@ -1,9 +1,9 @@
-const { resolve } = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const PATHS = require('./paths')
-const win = require('../config/window')
+import { resolve } from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import PATHS from './paths'
+import win from '../config/window'
 
-const plugins = [
+export default [
   new HtmlWebpackPlugin({
     path: PATHS.DIST_PATH,
     filename: 'index.html',
@@ -17,5 +17,3 @@ const plugins = [
     }
   })
 ]
-
-module.exports = plugins
