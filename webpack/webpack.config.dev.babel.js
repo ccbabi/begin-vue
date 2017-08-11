@@ -8,14 +8,8 @@ import commonPlugin from './commonPlugin'
 import host from './host'
 import mockServer from './mockServer'
 
-let doc = null
-try {
-  const data = fs.readFileSync(PATHS.CONFIG_PATH, 'utf8')
-  doc = yaml.safeLoad(data)
-} catch (e) {
-  console.log(e)
-}
-
+const data = fs.readFileSync(PATHS.CONFIG_PATH, 'utf8')
+const doc = yaml.safeLoad(data)
 const devServer = {
   host,
   port: 3721,
@@ -25,24 +19,20 @@ const devServer = {
   noInfo: true,
   historyApiFallback: true
 }
-
 let target = `http://${host}:3824`
-let prefix = '/api'
-if (doc.apiServer.enabled) {
+
+if (doc.server) {
   target = doc.apiServer.host
-  prefix = doc.apiServer.prefix
 } else {
-  mockServer()
+  mockServer(doc)
 }
 
 Object.assign(devServer, {
   proxy: [{
-    context: [].concat(prefix),
+    context: [].concat(doc.apiPrefix),
     target
   }]
 })
-
-console.log(devServer)
 
 export default {
   entry: ['babel-polyfill', PATHS.ENTRY_PATH],

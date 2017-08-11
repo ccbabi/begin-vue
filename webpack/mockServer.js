@@ -4,16 +4,19 @@ import path from 'path'
 import Koa from 'koa'
 import Mock from 'mockjs'
 
-export default () => {
+export default (doc) => {
   const app = new Koa()
+  const rule = [].concat(doc.apiPrefix).join('|')
+  const reg = new RegExp(`^(?:${rule})`)
+  console.log(reg + '')
 
   app.use(ctx => {
-    const pathName = ctx.request.path.slice(1)
+    const pathName = ctx.request.path
 
-    if (!/^api/.test(pathName)) ctx.throw(404)
+    if (!reg.test(pathName)) ctx.throw(404)
 
     const method = ctx.request.method
-    const fileName = pathName.split('/').join('_')
+    const fileName = pathName.split('/').join('_').slice(1)
     const filePath = path.join(__dirname, '../mock', method.toLowerCase(), fileName + '.js')
 
     if (!fs.existsSync(filePath)) ctx.throw(404)

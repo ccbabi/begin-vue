@@ -1,11 +1,8 @@
-## 联调服务器
-apiServer:
+## 开启服务联调，默认mock
+server: false
 
-  ## 联调时，请开启此选项
-  enabled: false
+## 服务接口地址，IP或域名
+apiServer: http://127.0.0.1:3824
 
-  ## 服务接口地址，IP或域名
-  host: 127.0.0.1:3824
-
-  ## 服务接口前缀，用于处理拦截请求
-  prefix: '/api'
+## 服务接口前缀，用于处理拦截请求
+apiPrefix: '/api'
