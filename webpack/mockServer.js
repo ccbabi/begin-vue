@@ -31,6 +31,7 @@ export default () => {
       const sourceData = sandbox.module.exports(ctx.request)
       const mockData = Mock.mock(sourceData)
 
+      ctx.type = 'json'
       ctx.response.body = JSON.stringify(mockData)
     } catch (err) {
       ctx.throw(500)

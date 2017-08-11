@@ -26,7 +26,7 @@ const devServer = {
   historyApiFallback: true
 }
 
-let target = '127.0.0.1:3824'
+let target = `http://${host}:3824`
 let prefix = '/api'
 if (doc.apiServer.enabled) {
   target = doc.apiServer.host
@@ -41,6 +41,8 @@ Object.assign(devServer, {
     target
   }]
 })
+
+console.log(devServer)
 
 export default {
   entry: ['babel-polyfill', PATHS.ENTRY_PATH],
