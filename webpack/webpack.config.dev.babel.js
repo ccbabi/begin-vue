@@ -44,7 +44,8 @@ export default {
     rules: [].concat(rules)
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin()
   ].concat(commonPlugin, htmlPlugin),
   resolve: {
     extensions: ['.vue', '.js', '.json', '.styl', '.less', '.css'],

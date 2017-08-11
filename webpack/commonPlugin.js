@@ -14,7 +14,7 @@ export default [
   new webpack.ProvidePlugin({
   }),
   new ExtractTextPlugin({
-    filename: 'css/index.css?.[contenthash:7]',
+    filename: 'css/index.css?[contenthash:7]',
     disable: process.env.NODE_ENV === 'development'
   }),
   new webpack.DefinePlugin({

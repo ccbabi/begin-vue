@@ -39,7 +39,7 @@
     "prestart": "npm run fix",
     "start": "npm run lint && cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.dev.babel.js --open",
     "prebuild": "npm run clean",
-    "build": "yarn run lint && cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.babel.js",
+    "build": "yarn run lint && cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.babel.js --progress",
     "clean": "rimraf dist/*",
     "lint": "standard --plugin html **/*.{js,vue}",
     "fix": "standard --fix --plugin html **/*.{js,vue}",
