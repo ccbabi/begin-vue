@@ -5,7 +5,7 @@ import rules from './rules'
 import commonPlugin from './commonPlugin'
 import host from './host'
 
-import './mock'
+import './mockServer'
 
 export default {
   entry: ['babel-polyfill', PATHS.ENTRY_PATH],
