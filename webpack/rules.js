@@ -86,7 +86,7 @@ export default [{
   use: [ {
     loader: 'url-loader',
     options: {
-      limit: 10,
+      limit: 10000,
       name: 'img/[name].[ext]?.[hash:7]'
     }
   } ]

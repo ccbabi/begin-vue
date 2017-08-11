@@ -1,25 +1,37 @@
-// const vm = require('vm')
+const vm = require('vm')
 const fs = require('fs')
 const path = require('path')
 const Koa = require('koa')
+const Mock = require('mockjs')
 
 const app = new Koa()
 
 app.use(ctx => {
-  const pathName = ctx.request.path
+  const pathName = ctx.request.path.slice(1)
+  if (!/^api/.test(pathName)) return ctx.throw(404)
   const method = ctx.request.method
-  if (!/^\/api/.test(pathName)) return
-  console.log(pathName)
-  console.log(method)
-  // const filePath = join(__dirname, '../mock', method.toLowerCase, path, '.js')
-  // console.log(filePath)
-  /*
+  const fileName = pathName.split('/').join('_')
+  const filePath = path.join(__dirname, '../mock', method.toLowerCase(), fileName + '.js')
+
   if (!fs.existsSync(filePath)) ctx.throw(404)
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) ctx.throw(500)
-    console.log(data)
-  }) */
-  ctx.body = 'hello Koa.'
+
+  try {
+    const data = fs.readFileSync(filePath, 'utf8')
+    const sandbox = {
+      module: {
+        exports: {}
+      }
+    }
+
+    vm.runInNewContext(data, sandbox)
+
+    const sourceData = sandbox.module.exports(ctx.request)
+    const mockData = Mock.mock(sourceData)
+
+    ctx.response.body = JSON.stringify(mockData)
+  } catch (err) {
+    ctx.throw(500)
+  }
 })
 
 app.listen(3824)
