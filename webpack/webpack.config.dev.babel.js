@@ -22,7 +22,7 @@ const devServer = {
 let target = `http://${host}:3824`
 
 if (doc.server) {
-  target = doc.apiServer.host
+  target = doc.apiServer
 } else {
   mockServer(doc)
 }
