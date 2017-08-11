@@ -8,7 +8,6 @@ export default (doc) => {
   const app = new Koa()
   const rule = [].concat(doc.apiPrefix).join('|')
   const reg = new RegExp(`^(?:${rule})`)
-  console.log(reg + '')
 
   app.use(ctx => {
     const pathName = ctx.request.path
