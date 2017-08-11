@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import PATHS from './paths'
-import win from '../config/window'
+import win from '../mock/window'
 
 export default [
   new HtmlWebpackPlugin({
