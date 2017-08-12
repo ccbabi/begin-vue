@@ -8,7 +8,8 @@ export default {
   entry: ['babel-polyfill', PATHS.BASE_URL_PATH, PATHS.ENTRY_PATH],
   output: {
     path: PATHS.DIST_PATH,
-    filename: 'js/[name].js?[chunkhash:7]'
+    filename: 'js/[name].js?[chunkhash:7]',
+    publicPath: ''
   },
   module: {
     rules: [].concat(rules)
