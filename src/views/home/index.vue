@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { getApiXxx, testJsonp } from '@/utils/client'
+import { getApiXxx, postApiXxx, testJsonp } from '@/utils/client'
 export default {
   name: 'home',
   data () {
@@ -15,7 +15,16 @@ export default {
   },
   mounted () {
     // test get
-    getApiXxx()
+    getApiXxx({a: 1, b: 2})
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+    // test post
+    postApiXxx({a: 1, b: 2})
       .then(data => {
         console.log(data)
       })

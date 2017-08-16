@@ -8,12 +8,14 @@ const jsonpConfig = {
 }
 const axiosConfig = {
   timeout,
+  withCredentials: true,
   headers: {
     'X-Requested-With': 'XMLHttpRequest'
   }
 }
 
 export default (method, url, option = {}) => {
+  let isPost = true
   const config = option.config || {}
   delete option.config
 
@@ -23,6 +25,7 @@ export default (method, url, option = {}) => {
     const query = qs.stringify(option, {
       addQueryPrefix: true
     })
+    isPost = false
 
     if (url.indexOf('?') > -1) {
       url += query.replace('?', '&')
@@ -40,13 +43,14 @@ export default (method, url, option = {}) => {
     })
   }
 
+  const makeConfig = {method, url}
+  if (isPost) {
+    makeConfig.data = option
+  }
+
   return axios({
     ...axiosConfig,
-    ...{
-      method,
-      url,
-      data: option
-    },
+    ...makeConfig,
     ...config
   }).then(ret => ret.data)
 }
