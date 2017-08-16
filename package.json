@@ -1,6 +1,6 @@
 {
   "name": "begin-vue",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -46,7 +46,10 @@
     "test": "mocha"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
+    "jsonp": "^0.2.1",
+    "qs": "^6.5.0",
     "vue": "^2.3.4"
   },
   "standard": {

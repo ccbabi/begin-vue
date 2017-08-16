@@ -24,7 +24,9 @@ export default {
   ].concat(commonPlugin, htmlPlugin),
   resolve: {
     extensions: ['.vue', '.js', '.json', '.styl', '.less', '.css'],
-    modules: [PATHS.SRC_PATH, 'node_modules']
+    alias: {
+      '@': PATHS.SRC_PATH
+    }
   },
   devtool: 'source-map',
   performance: {
