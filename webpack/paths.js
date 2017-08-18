@@ -6,7 +6,7 @@ const DIST_PATH = resolve(ROOT_PATH, 'dist')
 const SRC_PATH = resolve(ROOT_PATH, 'src')
 const ENTRY_PATH = resolve(ROOT_PATH, 'src', 'main.js')
 const BASE_URL_PATH = resolve(__dirname, 'getBasePath')
-const CONFIG_PATH = resolve(ROOT_PATH, 'snail.config.yaml')
+const CONFIG_PATH = resolve(ROOT_PATH, 'snail.config.yml')
 
 export default {
   ROOT_PATH,

@@ -21,6 +21,7 @@
     "less-loader": "^4.0.4",
     "mocha": "^3.4.2",
     "mockjs": "^1.0.1-beta3",
+    "portfinder": "^1.0.13",
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.6",
     "pug": "^2.0.0-rc.2",
@@ -33,7 +34,8 @@
     "vue-loader": "^13.0.1",
     "vue-template-compiler": "^2.3.4",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.0"
   },
   "scripts": {
     "prestart": "npm run fix",
@@ -43,7 +45,10 @@
     "clean": "rimraf dist/*",
     "lint": "standard --plugin html **/*.{js,vue}",
     "fix": "standard --fix --plugin html **/*.{js,vue}",
-    "test": "mocha"
+    "test": "mocha",
+    "preprod": "npm run clean",
+    "prod": "cross-env NODE_ENV=production node ./build",
+    "dev": "cross-env NODE_ENV=development node ./build"
   },
   "dependencies": {
     "axios": "^0.16.2",
