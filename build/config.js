@@ -1,12 +1,14 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 const portfinder = require('portfinder')
-const { nearRoot } = require('../utils/abs')
+const { nearRoot } = require('./utils/abs')
 
 let doc
-const { assign } = Object
+const { assign, create } = Object
+const cache = create(null)
 const devServerPort = 3721
 const mockServerPort = 3824
+const isProd = process.env.NODE_ENV === 'production'
 
 try {
   doc = yaml.safeLoad(fs.readFileSync(nearRoot('snail.config.yml'), 'utf8'))
@@ -28,7 +30,10 @@ async function getDevPort () {
 }
 
 async function getMockPort () {
-  return await getPort(mockServerPort)  // eslint-disable-line no-return-await
+  if (cache.mockPort) return Promise.resolve(cache.mockPort)
+  const mockPort = await getPort(mockServerPort)
+  cache.mockPort = mockPort
+  return mockPort
 }
 
 module.exports = assign(
@@ -36,6 +41,7 @@ module.exports = assign(
   config,
   {
     getDevPort,
-    getMockPort
+    getMockPort,
+    isProd
   }
 )

@@ -1,14 +1,13 @@
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const cfg = require('./init')
-const getWpkCfg = require(`./webpack/webpack.config.${cfg.isProd ? 'prod' : 'dev'}`)
+const host = require('./utils/host')
+const { nearRoot } = require('./utils/abs')
 const mockServer = require('./utils/mockServer')
+const getDevServer = require('./common/devServer')
+const config = require('./config')
+const webpackConfig = require(`./webpack.config.${config.isProd ? 'prod' : 'dev'}`)
 
-const { isProd, proxy } = cfg
-
-if (!isProd && !proxy) {
-  mockServer(cfg)
-}
+const { isProd, proxy, apiPrefix } = config
 
 function runWepback (wpkCfg) {
   return new Promise((resolve, reject) => {
@@ -19,7 +18,6 @@ function runWepback (wpkCfg) {
         }
         return reject(err.stack || err.message || err)
       }
-
       if (stats.hasErrors()) {
         const info = stats.toJson()
         return reject(info.errors)
@@ -29,34 +27,35 @@ function runWepback (wpkCfg) {
   })
 }
 
-function runWebpackDevServer (wpkCfg) {
+async function runWebpackDevServer (wpkCfg) {
+  const port = await config.getDevPort()
+  const devServer = await getDevServer()
   return new Promise((resolve, reject) => {
     const compiler = webpack(wpkCfg)
-    const server = new WebpackDevServer(compiler, {
-      stats: {
-        colors: true
-      }
-    })
-    server.listen(8080, '127.0.0.1', () => {
+    const server = new WebpackDevServer(compiler, devServer)
+    server.listen(port, `${host}`, () => {
+      console.log(`http://${host}:${port}`)
       resolve('dev')
     })
   })
 }
 
 async function start () {
-  const wpkCfg = await getWpkCfg()
-  if (isProd) {
-    return runWepback(wpkCfg)
-  }
-  return runWebpackDevServer(wpkCfg)
+  if (isProd) return await runWepback(webpackConfig) // eslint-disable-line no-return-await
+
+  const port = await config.getMockPort()
+  if (!proxy) mockServer({ prefix: apiPrefix, port, path: nearRoot('mock') })
+  return await runWebpackDevServer(webpackConfig)  // eslint-disable-line no-return-await
 }
 
 start()
   .then(env => {
     switch (env) {
       case 'dev':
+        // console.log('snail: server start on 127.0.0.1！')
         break
       case 'prod':
+        console.log('snail: complete！')
         break
     }
   })

@@ -1,5 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const { isProd } = require('../init')
+const { isProd } = require('../config')
 
 const cssLoader = {
   loader: 'css-loader',

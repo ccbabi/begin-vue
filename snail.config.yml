@@ -1,8 +1,8 @@
 ## 开启服务联调，默认mock
-server: false
+proxy: false
 
 ## 服务接口地址，IP或域名
-apiServer: http://127.0.0.1:3824
+proxyServer: http://127.0.0.1:3824
 
 ## 服务接口前缀，用于处理拦截请求
 apiPrefix: '/api'

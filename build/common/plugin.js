@@ -2,8 +2,8 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { nearRoot, nearSrc } = require('../utils/abs')
-const { isProd } = require('../init')
-const win = require('../../mock/window')
+const { isProd } = require('../config')
+const win = require(nearRoot('mock/window'))
 
 module.exports = [
   new HtmlWebpackPlugin({
@@ -30,7 +30,7 @@ module.exports = [
   new webpack.ProvidePlugin({
   }),
   new ExtractTextPlugin({
-    filename: 'css/index.css?.[contenthash:7]',
+    filename: 'css/index.css?[contenthash:7]',
     disable: !isProd
   }),
   new webpack.DefinePlugin({

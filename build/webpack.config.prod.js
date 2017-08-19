@@ -1,11 +1,11 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
+const { nearRoot, nearSrc } = require('./utils/abs')
+const commonPlugin = require('./common/plugin')
 const wpkBaseCfg = require('./webpack.config.base')
-const { nearRoot, nearSrc } = require('../utils/abs')
-const commonPlugin = require('../utils/commonPlugin')
 
-const wpkCfg = merge(wpkBaseCfg, {
-  entry: ['babel-polyfill', nearRoot('build/entry/publicPath'), nearSrc('main.js')],
+module.exports = merge(wpkBaseCfg, {
+  entry: ['babel-polyfill', nearRoot('build/common/publicPath'), nearSrc('main.js')],
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -17,7 +17,3 @@ const wpkCfg = merge(wpkBaseCfg, {
   ].concat(commonPlugin),
   devtool: 'source-map'
 })
-
-module.exports = function () {
-  return Promise.resolve(wpkCfg)
-}

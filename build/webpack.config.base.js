@@ -1,11 +1,11 @@
-const { SRC_PATH, nearRoot } = require('../utils/abs')
-const use = require('../utils/use')
-const { isProd } = require('../init')
+const { src, nearRoot } = require('./utils/abs')
+const use = require('./common/use')
+const { isProd } = require('./config')
 
 module.exports = {
   output: {
     path: nearRoot('dist'),
-    filename: `js/[name].js?.[${isProd ? 'chunkhash' : 'hash'}:7]`,
+    filename: `js/[name].js?[${isProd ? 'chunkhash' : 'hash'}:7]`,
     publicPath: ''
   },
   module: {
@@ -59,7 +59,7 @@ module.exports = {
   resolve: {
     extensions: ['.vue', '.js', '.json', '.styl', '.less', '.css'],
     alias: {
-      '@': SRC_PATH
+      '@': src
     }
   },
   performance: {

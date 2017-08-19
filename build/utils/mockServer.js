@@ -4,9 +4,10 @@ const path = require('path')
 const Koa = require('koa')
 const Mock = require('mockjs')
 
-module.exports = (doc, callback = () => {}) => {
+module.exports = function (config) {
+  console.log(config)
   const app = new Koa()
-  const rule = [].concat(doc.apiPrefix).join('|')
+  const rule = [].concat(config.prefix).join('|')
   const reg = new RegExp(`^(?:${rule})`)
 
   app.use(ctx => {
@@ -16,7 +17,7 @@ module.exports = (doc, callback = () => {}) => {
 
     const method = ctx.request.method
     const fileName = pathName.split('/').join('_').slice(1)
-    const filePath = path.join(__dirname, '../mock', method.toLowerCase(), fileName + '.js')
+    const filePath = path.join(config.path, method.toLowerCase(), fileName + '.js')
 
     if (!fs.existsSync(filePath)) ctx.throw(404)
 
@@ -39,6 +40,5 @@ module.exports = (doc, callback = () => {}) => {
       ctx.throw(500)
     }
   })
-
-  app.listen(3824, callback)
+  app.listen(config.port)
 }
