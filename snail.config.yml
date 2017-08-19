@@ -6,3 +6,5 @@ proxyServer: http://127.0.0.1:3824
 
 ## 服务接口前缀，用于处理拦截请求
 apiPrefix: '/api'
+
+https: true
