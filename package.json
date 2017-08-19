@@ -41,16 +41,16 @@
   },
   "scripts": {
     "prestart": "npm run fix",
-    "start": "npm run lint && cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.dev.babel.js --open",
+    "start": "npm run lint && cross-env NODE_ENV=development node ./build",
     "prebuild": "npm run clean",
-    "build": "yarn run lint && cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.babel.js --progress",
+    "build": "yarn run lint && cross-env NODE_ENV=production node ./build",
     "clean": "rimraf dist/*",
     "lint": "standard --plugin html **/*.{js,vue}",
     "fix": "standard --fix --plugin html **/*.{js,vue}",
     "test": "mocha",
     "preprod": "npm run clean",
-    "prod": "cross-env NODE_ENV=production node ./build",
-    "dev": "cross-env NODE_ENV=development node ./build"
+    "dev": "cross-env NODE_ENV=development node ./build",
+    "prod": "cross-env NODE_ENV=production node ./build"
   },
   "dependencies": {
     "axios": "^0.16.2",
