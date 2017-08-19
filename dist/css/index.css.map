@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/views/home/index.vue"],"names":[],"mappings":"AACA,EACE,YACA,oBACA,oBACA,YAAc","file":"css/index.css?cf7cc1a","sourcesContent":["\np {\n  color: green;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n\n\n// WEBPACK FOOTER //\n// ./src/views/home/index.vue"],"sourceRoot":""}

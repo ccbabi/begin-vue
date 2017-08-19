@@ -10,10 +10,11 @@ export default {
   name: 'home',
   data () {
     return {
-      status: 'vue is works!123'
+      status: 'vue is works!'
     }
   },
   mounted () {
+    /*
     // test get
     getApiXxx({a: 1, b: 2})
       .then(data => {
@@ -38,6 +39,7 @@ export default {
     })
       .then(data => console.log(data))
       .catch(err => console.log(err))
+    */
   }
 }
 </script>

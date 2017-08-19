@@ -1,6 +1,6 @@
-const { src, nearRoot } = require('./utils/abs')
-const use = require('./common/use')
-const { isProd } = require('./config')
+const { src, nearRoot } = require('../utils/abs')
+const use = require('../common/use')
+const { isProd } = require('../config')
 
 module.exports = {
   output: {

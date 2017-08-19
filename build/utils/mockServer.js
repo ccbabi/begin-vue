@@ -5,7 +5,6 @@ const Koa = require('koa')
 const Mock = require('mockjs')
 
 module.exports = function (config) {
-  console.log(config)
   const app = new Koa()
   const rule = [].concat(config.prefix).join('|')
   const reg = new RegExp(`^(?:${rule})`)
@@ -40,5 +39,7 @@ module.exports = function (config) {
       ctx.throw(500)
     }
   })
-  app.listen(config.port)
+  app.listen(config.port, () => {
+    console.log(`Snail: Mock服务启动在 http://127.0.0.1:${config.port}`)
+  })
 }
