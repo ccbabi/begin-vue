@@ -4,21 +4,27 @@ const https = require('https')
 const { resolve } = require('path')
 const express = require('express')
 const host = require('./utils/host')
+const { nearRoot } = require('./utils/abs')
 const config = require('./config')
 const webpackDevMiddleware = require('./middleware/webpackDevMiddleware')
 const webpackHotMiddleware = require('./middleware/webpackHotMiddleware')
 
 let server
+const empty = Object.create(null)
 const app = express()
+const resolveDir = function (dir, pathName) {
+  return resolve(dir, pathName)
+}.bind(empty, __dirname)
 
+app.use(config.staticRouter, express.static(nearRoot('static')))
 app.use(webpackDevMiddleware)
 app.use(webpackHotMiddleware)
 
 if (config.https) {
   const options = {
-    key: fs.readFileSync(resolve(__dirname, 'ssl/key.pem')),
-    ca: fs.readFileSync(resolve(__dirname, 'ssl/csr.pem')),
-    cert: fs.readFileSync(resolve(__dirname, 'ssl/cert.pem'))
+    key: fs.readFileSync(resolveDir('ssl/key.pem')),
+    ca: fs.readFileSync(resolveDir('ssl/csr.pem')),
+    cert: fs.readFileSync(resolveDir('ssl/cert.pem'))
   }
   server = https.createServer(options, app)
 } else {
