@@ -4,7 +4,7 @@ proxy: false
 ## 服务器接口地址
 proxyServer: http://127.0.0.1:3722
 
-## 服务接口前缀
+## 服务器、Mock接口前缀
 apiPrefix: /api
 
 ## 开发服务端口，默认为3721; null表示自动端口
@@ -15,3 +15,6 @@ https: false
 
 ## 静态路由虚拟路径
 staticRouter: /static
+
+## 开启mock服务
+mock: true

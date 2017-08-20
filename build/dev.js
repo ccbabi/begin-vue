@@ -19,9 +19,11 @@ const resolveDir = function (dir, pathName) {
 }.bind(empty, __dirname)
 
 app.use(config.staticRouter, express.static(nearRoot('static')))
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(mockMiddleware)
+if (config.mock) {
+  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json())
+  app.use(mockMiddleware(config.apiPrefix))
+}
 app.use(webpackDevMiddleware)
 app.use(webpackHotMiddleware)
 
