@@ -6,6 +6,8 @@ const express = require('express')
 const host = require('./utils/host')
 const { nearRoot } = require('./utils/abs')
 const config = require('./config')
+const bodyParser = require('body-parser')
+const mockMiddleware = require('./middleware/mockMiddleware')
 const webpackDevMiddleware = require('./middleware/webpackDevMiddleware')
 const webpackHotMiddleware = require('./middleware/webpackHotMiddleware')
 
@@ -17,6 +19,9 @@ const resolveDir = function (dir, pathName) {
 }.bind(empty, __dirname)
 
 app.use(config.staticRouter, express.static(nearRoot('static')))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(mockMiddleware)
 app.use(webpackDevMiddleware)
 app.use(webpackHotMiddleware)
 

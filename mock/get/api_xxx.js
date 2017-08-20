@@ -9,6 +9,6 @@ module.exports = function (req) {
         'id|+1': 1
       }]
     },
-    'msg': ''
+    'msg': 'ok'
   }
 }
