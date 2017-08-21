@@ -1,0 +1,20 @@
+server:
+  port: ~
+  https: false
+
+onOff:
+  static: false
+  mock: false
+  proxy: false
+
+static:
+  dirname: 'static'
+  virtualPath: '/static'
+
+mock:
+  context: /api
+
+proxy:
+  context: /api
+  options:
+    target: http://127.0.0.1:3824

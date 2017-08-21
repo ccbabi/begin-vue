@@ -11,13 +11,13 @@ const isProd = process.env.NODE_ENV === 'production'
 portfinder.basePort = 3721
 
 try {
-  doc = yaml.safeLoad(fs.readFileSync(nearRoot('snail.config.yml'), 'utf8'))
+  doc = yaml.safeLoad(fs.readFileSync(nearRoot('snail.yml'), 'utf8'))
 } catch (err) {
   throw err
 }
 
 const config = assign({}, doc)
-delete config.port
+delete config.server.port
 
 function getPort (basePort) {
   return portfinder.getPortPromise()
@@ -26,7 +26,7 @@ function getPort (basePort) {
 async function getDevPort () {
   if (cache.devPort) return Promise.resolve(cache.devPort)
 
-  if (!doc.port) {
+  if (!doc.server.port) {
     const devPort = await getPort()
     cache.devPort = devPort
     return devPort
@@ -42,12 +42,16 @@ async function getMockPort () {
   return mockPort
 }
 
+const computed = {
+  getDevPort,
+  getMockPort
+}
+
 module.exports = assign(
   {},
   config,
+  {computed},
   {
-    getDevPort,
-    getMockPort,
-    isProd
+    env: {isProd}
   }
 )

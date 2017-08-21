@@ -1,19 +1,19 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const { isProd } = require('../config')
+const { env } = require('../config')
 
 const cssLoader = {
   loader: 'css-loader',
   options: {
     importLoaders: 1,
-    sourceMap: isProd,
-    minimize: isProd
+    sourceMap: env.isProd,
+    minimize: env.isProd
   }
 }
 
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
-    sourceMap: isProd
+    sourceMap: env.isProd
   }
 }
 
@@ -24,7 +24,7 @@ module.exports = function (loader, isVue) {
     loaders.push({
       loader: `${loader}-loader`,
       options: {
-        sourceMap: isProd
+        sourceMap: env.isProd
       }
     })
   }

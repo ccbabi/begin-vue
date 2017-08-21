@@ -1,6 +1,5 @@
-const { isProd } = require('./config')
-
-require(`./${isProd ? 'prod' : 'dev'}`)()
+const { env } = require('./config')
+require(`./${env.isProd ? 'prod' : 'dev'}`)()
 
 /*
 async function startMockServer () {

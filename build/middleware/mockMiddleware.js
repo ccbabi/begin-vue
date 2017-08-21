@@ -6,8 +6,10 @@ const vm = require('vm')
 const pathToRegexp = require('path-to-regexp')
 const { nearRoot } = require('../utils/abs')
 
-module.exports = function (filter) {
-  const filterRe = new RegExp(`^${filter}`)
+module.exports = function (context) {
+  const ctx = [].concat(context).join('|')
+  const filterRe = new RegExp(`^(?:${ctx})`)
+
   return function (req, res, next) {
     if (!filterRe.test(req.url)) return next()
     const method = req.method.toLowerCase()

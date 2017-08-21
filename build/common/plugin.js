@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { nearRoot, nearSrc } = require('../utils/abs')
-const { isProd } = require('../config')
+const { env } = require('../config')
 const win = require(nearRoot('mock/window'))
 
 module.exports = [
@@ -15,7 +15,7 @@ module.exports = [
     window: win,
     inject: false,
     minify: {
-      removeComments: isProd
+      removeComments: env.isProd
     }
   }),
   new webpack.optimize.CommonsChunkPlugin({
@@ -31,7 +31,7 @@ module.exports = [
   }),
   new ExtractTextPlugin({
     filename: 'css/index.css?[contenthash:7]',
-    disable: !isProd
+    disable: !env.isProd
   }),
   new webpack.DefinePlugin({
     'process.env': {

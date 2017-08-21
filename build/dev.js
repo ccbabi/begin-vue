@@ -3,6 +3,7 @@ const http = require('http')
 const https = require('https')
 const { resolve } = require('path')
 const express = require('express')
+const httpProxyMiddleware = require('http-proxy-middleware')
 const host = require('./utils/host')
 const { nearRoot } = require('./utils/abs')
 const config = require('./config')
@@ -18,16 +19,26 @@ const resolveDir = function (dir, pathName) {
   return resolve(dir, pathName)
 }.bind(empty, __dirname)
 
-app.use(config.staticRouter, express.static(nearRoot('static')))
-if (config.mock) {
+if (config.onOff.static) {
+  const {dirname, virtualPath} = config.static
+  app.use(virtualPath, express.static(nearRoot(dirname)))
+}
+
+if (config.onOff.mock) {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
-  app.use(mockMiddleware(config.apiPrefix))
+  app.use(mockMiddleware(config.mock.context))
 }
+
+if (config.onOff.proxy) {
+  const {context, options} = config.proxy
+  app.use(context, httpProxyMiddleware(options))
+}
+
 app.use(webpackDevMiddleware)
 app.use(webpackHotMiddleware)
 
-if (config.https) {
+if (config.server.https) {
   const options = {
     key: fs.readFileSync(resolveDir('ssl/key.pem')),
     ca: fs.readFileSync(resolveDir('ssl/csr.pem')),
@@ -39,10 +50,10 @@ if (config.https) {
 }
 
 async function start (wpkCfg) {
-  const devPort = await config.getDevPort()
+  const devPort = await config.computed.getDevPort()
 
   server.listen(devPort, host, () => {
-    console.log(`Snail: 服务器启动在 ${config.https ? 'https' : 'http'}://${host}:${devPort}`)
+    console.log(`Snail: 服务器启动在 ${config.server.https ? 'https' : 'http'}://${host}:${devPort}`)
   })
 }
 

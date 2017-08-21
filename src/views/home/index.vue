@@ -10,7 +10,7 @@ export default {
   name: 'home',
   data () {
     return {
-      status: 'vue is works!'
+      status: 'vue is works!13'
     }
   },
   mounted () {

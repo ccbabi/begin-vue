@@ -1,11 +1,11 @@
 const { src, nearRoot } = require('../utils/abs')
 const use = require('../common/use')
-const { isProd } = require('../config')
+const { env } = require('../config')
 
 module.exports = {
   output: {
     path: nearRoot('dist'),
-    filename: `js/[name].js?[${isProd ? 'chunkhash' : 'hash'}:7]`,
+    filename: `js/[name].js?[${env.isProd ? 'chunkhash' : 'hash'}:7]`,
     publicPath: ''
   },
   module: {
@@ -27,7 +27,7 @@ module.exports = {
       loader: 'vue-loader',
       options: {
         cssModules: {
-          localIdentName: isProd ? '[local]--[hash:base64:7]' : '[hash:base64:7]',
+          localIdentName: env.isProd ? '[local]--[hash:base64:7]' : '[hash:base64:7]',
           cameCase: true
         },
         loaders: {

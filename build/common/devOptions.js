@@ -1,7 +1,8 @@
 const { nearRoot } = require('../utils/abs')
+const webpackConfig = require('../webpack/webpack.config.dev')
 
 module.exports = {
-  publicPath: '',
+  publicPath: webpackConfig.publicPath,
   contentBase: nearRoot('dist'),
   inline: true,
   hot: true,
