@@ -5,7 +5,7 @@ const commonPlugin = require('../common/plugin')
 const webpackBaseConfig = require('./webpack.config.base')
 
 module.exports = merge(webpackBaseConfig, {
-  entry: ['webpack-hot-middleware/client', 'babel-polyfill', nearSrc('main.js')],
+  entry: ['webpack-hot-middleware/client?timeout=2000&overlay=true', 'babel-polyfill', nearSrc('main.js')],
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
