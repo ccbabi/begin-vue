@@ -58,5 +58,5 @@ async function start (wpkCfg) {
 }
 
 module.exports = function () {
-  start().catch(err => console.err(err.stack || err.message || err))
+  start().catch(err => console.error(err.stack || err.message || err))
 }
