@@ -30,7 +30,9 @@ if (doc.server) {
 Object.assign(devServer, {
   proxy: [{
     context: [].concat(doc.apiPrefix),
-    target
+    target,
+    changeOrigin: true,
+    secure: false
   }]
 })
 
