@@ -13,7 +13,8 @@ module.exports = merge(webpackBaseConfig, {
       compress: {
         warnings: false
       }
-    })
+    }),
+    new webpack.ProgressPlugin()
   ].concat(commonPlugin),
   devtool: 'source-map'
 })

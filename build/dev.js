@@ -4,11 +4,12 @@ const https = require('https')
 const { resolve } = require('path')
 const express = require('express')
 const httpProxyMiddleware = require('http-proxy-middleware')
+const chalk = require('chalk')
+const connectMockMiddleware = require('connect-mock-middleware')
 const host = require('./utils/host')
 const { nearRoot } = require('./utils/abs')
 const config = require('./config')
 const bodyParser = require('body-parser')
-const mockMiddleware = require('./middleware/mockMiddleware')
 const webpackDevMiddleware = require('./middleware/webpackDevMiddleware')
 const webpackHotMiddleware = require('./middleware/webpackHotMiddleware')
 
@@ -27,7 +28,7 @@ if (config.onOff.static) {
 if (config.onOff.mock) {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
-  app.use(mockMiddleware(config.mock.context))
+  app.use(connectMockMiddleware(nearRoot('mock'), config.mock.context))
 }
 
 if (config.onOff.proxy) {
@@ -53,10 +54,12 @@ async function start (wpkCfg) {
   const devPort = await config.computed.getDevPort()
 
   server.listen(devPort, host, () => {
-    console.log(`Snail: 服务器启动在 ${config.server.https ? 'https' : 'http'}://${host}:${devPort}`)
+    console.log(chalk.gray('server start on: '), chalk.green(`${config.server.https ? 'https' : 'http'}://${host}:${devPort}`))
   })
 }
 
 module.exports = function () {
-  start().catch(err => console.error(err.stack || err.message || err))
+  start().catch(err => {
+    console.error(chalk.underline.red(err))
+  })
 }

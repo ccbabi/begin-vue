@@ -30,12 +30,13 @@ module.exports = [
   new webpack.ProvidePlugin({
   }),
   new ExtractTextPlugin({
-    filename: 'css/index.css?[contenthash:7]',
+    filename: 'css/index.[contenthash:7].css',
     disable: !env.isProd
   }),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
-  })
+  }),
+  new webpack.optimize.ModuleConcatenationPlugin()
 ]

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <p>{{status}}</p>
+    <router-link to='/demo1'>Go to Demo1</router-link>
+    <router-link to='/demo2'>Go to Demo2</router-link>
+    <section>{{header}}</section>
+    <router-view></router-view>
+    <section>{{footer}}</section>
   </div>
 </template>
 
@@ -9,7 +13,8 @@ export default {
   name: 'home',
   data () {
     return {
-      status: 'vue is works!13'
+      header: 'header',
+      footer: 'footer'
     }
   }
 }

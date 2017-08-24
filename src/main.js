@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Home from '@/views/home'
+import router from '@/router'
 import '@/assets/styles'
 
-new Vue({ // eslint-disable-line no-new
-  el: '#mount',
+const app = new Vue({
+  router,
   render: h => h(Home)
 })
+
+app.$mount('#app')
