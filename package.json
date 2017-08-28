@@ -1,6 +1,6 @@
 {
   "name": "begin-vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -13,7 +13,6 @@
     "connect-mock-middleware": "^0.0.3",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.4",
-    "eslint-plugin-html": "^3.1.0",
     "express": "^4.15.4",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
@@ -29,7 +28,6 @@
     "postcss-loader": "^2.0.6",
     "pug": "^2.0.0-rc.2",
     "rimraf": "^2.6.1",
-    "standard": "^10.0.2",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
@@ -42,17 +40,11 @@
     "webpack-merge": "^4.1.0"
   },
   "scripts": {
-    "prestart": "npm run fix",
-    "start": "npm run lint && cross-env NODE_ENV=development node ./build",
+    "start": "cross-env NODE_ENV=development node ./build",
     "prebuild": "npm run clean",
-    "build": "npm run lint && cross-env NODE_ENV=production node ./build",
+    "build": "cross-env NODE_ENV=production node ./build",
     "clean": "rimraf dist/*",
-    "lint": "standard --plugin html **/*.{js,vue}",
-    "fix": "standard --fix --plugin html **/*.{js,vue}",
-    "test": "mocha",
-    "preprod": "npm run clean",
-    "dev": "cross-env NODE_ENV=development node ./build",
-    "prod": "cross-env NODE_ENV=production node ./build"
+    "test": "mocha"
   },
   "dependencies": {
     "axios": "^0.16.2",

@@ -42,7 +42,7 @@ module.exports = {
         loaders: {
           css: use('css', true),
           less: use('less', true),
-          stylus: use('less', true)
+          stylus: use('stylus', true)
         }
       }
     }, {
