@@ -28,7 +28,10 @@ if (config.onOff.static) {
 if (config.onOff.mock) {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
-  app.use(connectMockMiddleware(nearRoot('mock'), config.mock.context))
+  app.use(connectMockMiddleware(nearRoot('mock'), {
+    prefix: config.mock.context,
+    callback: config.mock.callback
+  }))
 }
 
 if (config.onOff.proxy) {

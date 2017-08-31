@@ -1260,9 +1260,9 @@ config-chain@~1.1.5:
     ini "^1.3.4"
     proto-list "~1.2.1"
 
-connect-mock-middleware@^0.0.3:
-  version "0.0.3"
-  resolved "http://registry.npm.taobao.org/connect-mock-middleware/download/connect-mock-middleware-0.0.3.tgz#d999169ad93f2f19d966529b2d860c3afdcb4f02"
+connect-mock-middleware@^0.1.1:
+  version "0.1.1"
+  resolved "http://registry.npm.taobao.org/connect-mock-middleware/download/connect-mock-middleware-0.1.1.tgz#b285a24d66dc02308f34fcf341b12f9321380680"
   dependencies:
     mockjs "^1.0.1-beta3"
     path-to-regexp "^1.7.0"
