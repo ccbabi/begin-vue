@@ -1,5 +1,6 @@
 import request from '@/common/request'
 
+/*
 // get demo
 export function getApiXxx (data = {}) {
   return request('get', '/api/xxx', data)
@@ -14,3 +15,4 @@ export function postApiXxx (data = {}) {
 export function testJsonp (data = {}) {
   return request('jsonp', 'http://suggest.58.com.cn/home_hotword.do', data)
 }
+*/

@@ -1,4 +1,4 @@
 <template lang="pug">
-  div demo1
+  div#app
+    router-view
 </template>
-

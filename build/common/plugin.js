@@ -9,8 +9,8 @@ module.exports = [
   new HtmlWebpackPlugin({
     path: nearRoot('dist'),
     filename: 'index.html',
-    template: nearSrc('templates/index.ejs'),
-    favicon: nearSrc('assets/imgs/favicon.ico'),
+    template: nearSrc('template/index.ejs'),
+    favicon: nearSrc('asset/img/favicon.ico'),
     title: 'begin-vue',
     window: win,
     inject: false,

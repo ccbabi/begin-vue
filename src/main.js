@@ -1,11 +1,16 @@
 import Vue from 'vue'
-import Home from '@/views/home'
 import router from '@/router'
-import '@/assets/styles'
+import store from '@/store'
+import layout from '@/view/layout'
+import '@/asset/less'
+
+// 移动端引入
+// import '@/common/flexible'
 
 const app = new Vue({
   router,
-  render: h => h(Home)
+  store,
+  render: h => h(layout)
 })
 
 app.$mount('#app')

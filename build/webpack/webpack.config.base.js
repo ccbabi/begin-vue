@@ -5,7 +5,8 @@ const { env } = require('../config')
 let filename
 
 if (env.isProd) {
-  filename = 'js/[name].[chunkhash:7].js'
+  // filename = 'js/[name].[chunkhash:7].js'
+  filename = 'js/[name].js'
 } else {
   filename = 'js/[name].[hash:7]'
 }
@@ -20,7 +21,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.css$/,
-      use: use('css')
+      use: use('')
     }, {
       test: /\.less$/,
       use: use('less')
@@ -40,7 +41,7 @@ module.exports = {
           cameCase: true
         },
         loaders: {
-          css: use('css', true),
+          css: use('', true),
           less: use('less', true),
           stylus: use('stylus', true)
         }
