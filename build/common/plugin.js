@@ -30,7 +30,7 @@ module.exports = [
   new webpack.ProvidePlugin({
   }),
   new ExtractTextPlugin({
-    filename: 'css/index.[contenthash:7].css',
+    filename: 'css/index.css',
     disable: !env.isProd
   }),
   new webpack.DefinePlugin({

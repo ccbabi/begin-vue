@@ -16,23 +16,17 @@ try {
   throw err
 }
 
-const config = assign({}, doc)
-delete config.server.port
-
 function getPort (basePort) {
   return portfinder.getPortPromise()
 }
 
 async function getDevPort () {
+  if (doc.server.port) return Promise.resolve(doc.server.port)
   if (cache.devPort) return Promise.resolve(cache.devPort)
 
-  if (!doc.server.port) {
-    const devPort = await getPort()
-    cache.devPort = devPort
-    return devPort
-  }
-
-  return Promise.resolve(doc.port)
+  const devPort = await getPort()
+  cache.devPort = devPort
+  return devPort
 }
 
 async function getMockPort () {
@@ -49,7 +43,7 @@ const computed = {
 
 module.exports = assign(
   {},
-  config,
+  doc,
   {computed},
   {
     env: {isProd}

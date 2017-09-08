@@ -1,5 +1,5 @@
-<template lang="pug">
-  div {{ greeter }}
+<template>
+  <div>{{ greeter }}</div>
 </template>
 
 <script>
