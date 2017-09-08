@@ -20,6 +20,7 @@ const postcssLoader = {
 module.exports = function (loader, isVue) {
   let fallback = 'style-loader'
   const loaders = [cssLoader, postcssLoader]
+
   if (loader) {
     loaders.push({
       loader: `${loader}-loader`,
@@ -34,8 +35,8 @@ module.exports = function (loader, isVue) {
   }
 
   const options = {
-    use: loaders,
-    fallback
+    fallback,
+    use: loaders
   }
 
   if (isVue) {

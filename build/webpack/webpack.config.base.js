@@ -36,15 +36,12 @@ module.exports = {
       test: /\.vue$/,
       loader: 'vue-loader',
       options: {
-        cssModules: {
-          localIdentName: env.isProd ? '[local]--[hash:base64:7]' : '[hash:base64:7]',
-          cameCase: true
-        },
         loaders: {
           css: use('', true),
           less: use('less', true),
           stylus: use('stylus', true)
         }
+
       }
     }, {
       test: /\.(png|jpe?g|gif|svg)(\?.+)?$/,
