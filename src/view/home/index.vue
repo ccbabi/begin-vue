@@ -1,5 +1,5 @@
-<template>
-  <div>{{ greeter }}</div>
+<template lang="pug">
+  div {{ greeter }}
 </template>
 
 <script>
@@ -13,4 +13,4 @@ export default {
 }
 </script>
 
-<style lang="less" src="./index.less"></style>
+<style lang="stylus" src="./index.styl"></style>

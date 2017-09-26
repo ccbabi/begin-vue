@@ -10,7 +10,7 @@ module.exports = [
     path: nearRoot('dist'),
     filename: 'index.html',
     template: nearSrc('template/index.ejs'),
-    favicon: nearSrc('asset/img/favicon.ico'),
+    favicon: nearSrc('image/favicon.ico'),
     title: 'begin-vue',
     window: win,
     inject: false,
