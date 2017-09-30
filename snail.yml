@@ -1,3 +1,12 @@
+# project
+
+environment:
+  development:
+    sourceMap: true
+
+  production:
+    sourceMap: false
+
 server:
   port: ~
   https: false

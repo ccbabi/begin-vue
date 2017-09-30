@@ -5,15 +5,15 @@ const cssLoader = {
   loader: 'css-loader',
   options: {
     importLoaders: 1,
-    sourceMap: env.isProd,
-    minimize: env.isProd
+    sourceMap: env.sourceMap,
+    minimize: env.sourceMap
   }
 }
 
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
-    // warning
+    // warning：detect devtool
     sourceMap: true
   }
 }
@@ -26,7 +26,7 @@ module.exports = function (loader, isVue) {
     loaders.push({
       loader: `${loader}-loader`,
       options: {
-        sourceMap: env.isProd
+        sourceMap: env.sourceMap
       }
     })
   }
