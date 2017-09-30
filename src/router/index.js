@@ -8,4 +8,7 @@ const routes = [{
 
 Vue.use(VueRouter)
 
-export default new VueRouter({ routes })
+export default new VueRouter({
+  routes,
+  mode: 'history'
+})

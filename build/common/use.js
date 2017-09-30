@@ -13,7 +13,8 @@ const cssLoader = {
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
-    sourceMap: env.isProd
+    // warning
+    sourceMap: true
   }
 }
 

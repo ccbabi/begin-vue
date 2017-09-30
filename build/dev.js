@@ -3,40 +3,44 @@ const http = require('http')
 const https = require('https')
 const { resolve } = require('path')
 const express = require('express')
+const bodyParser = require('body-parser')
 const httpProxyMiddleware = require('http-proxy-middleware')
-const chalk = require('chalk')
 const connectMockMiddleware = require('connect-mock-middleware')
+const history = require('connect-history-api-fallback')
+const chalk = require('chalk')
 const host = require('./utils/host')
 const { nearRoot } = require('./utils/abs')
 const config = require('./config')
-const bodyParser = require('body-parser')
 const webpackDevMiddleware = require('./middleware/webpackDevMiddleware')
 const webpackHotMiddleware = require('./middleware/webpackHotMiddleware')
 
 let server
 const empty = Object.create(null)
 const app = express()
+
 const resolveDir = function (dir, pathName) {
   return resolve(dir, pathName)
 }.bind(empty, __dirname)
-
-if (config.onOff.static) {
-  const {dirname, virtualPath} = config.static
-  app.use(virtualPath, express.static(nearRoot(dirname)))
-}
 
 if (config.onOff.mock) {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(connectMockMiddleware(nearRoot('mock'), {
     prefix: config.mock.context,
-    callback: config.mock.callback
+    callback: config.mock.allback
   }))
 }
 
 if (config.onOff.proxy) {
   const {context, options} = config.proxy
   app.use(context, httpProxyMiddleware(options))
+}
+
+app.use(history())
+
+if (config.onOff.static) {
+  const {dirname, virtualPath} = config.static
+  app.use(virtualPath, express.static(nearRoot(dirname)))
 }
 
 app.use(webpackDevMiddleware)

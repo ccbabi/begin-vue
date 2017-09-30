@@ -41,11 +41,12 @@ const computed = {
   getMockPort
 }
 
+const env = assign({}, doc.environment[process.env.NODE_ENV], { isProd })
+delete doc.environment
+
 module.exports = assign(
   {},
   doc,
-  {computed},
-  {
-    env: {isProd}
-  }
+  { computed },
+  { env }
 )

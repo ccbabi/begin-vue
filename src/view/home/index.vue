@@ -7,7 +7,7 @@ export default {
   name: 'home',
   data () {
     return {
-      greeter: 'hello, Vue.'
+      greeter: 'Hello, Vue!'
     }
   }
 }
