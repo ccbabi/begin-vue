@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const httpProxyMiddleware = require('http-proxy-middleware')
 const connectMockMiddleware = require('connect-mock-middleware')
 const history = require('connect-history-api-fallback')
-const chalk = require('chalk')
+const logger = require('./utils/logger')
 const host = require('./utils/host')
 const { nearRoot } = require('./utils/abs')
 const config = require('./config')
@@ -61,15 +61,15 @@ async function start (wpkCfg) {
   const devPort = await config.computed.getDevPort()
 
   server.listen(devPort, '0.0.0.0', () => {
-    console.log(chalk.gray('server start on: '))
+    logger.info('Server start on: ')
     host.forEach(h => {
-      console.log(chalk.green(`  ${config.server.https ? 'https' : 'http'}://${h}:${devPort}`))
+      logger.success(`${config.server.https ? 'https' : 'http'}://${h}:${devPort}`)
     })
   })
 }
 
 module.exports = function () {
   start().catch(err => {
-    console.error(chalk.underline.red(err))
+    logger.error(err.message || err)
   })
 }
