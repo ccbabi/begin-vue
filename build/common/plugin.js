@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { nearRoot, nearSrc } = require('../utils/abs')
 const { env } = require('../config')
 const win = require(nearRoot('mock/window'))
@@ -38,6 +39,15 @@ module.exports = [
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
+  }),
+  new CopyWebpackPlugin([{
+    context: 'asset',
+    from: '**/*',
+    toType: 'dir'
+  }], {
+    ignore: [
+      'demo.jpg'
+    ]
   }),
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
