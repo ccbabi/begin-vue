@@ -47,8 +47,7 @@
     "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=production node ./build",
     "watch": "cross-env NODE_ENV=production webpack --config ./build/webpack/webpack.config.prod.js --watch",
-    "clean": "rimraf dist/*",
-    "test": "mocha"
+    "clean": "rimraf dist/*"
   },
   "dependencies": {
     "axios": "^0.16.2",
