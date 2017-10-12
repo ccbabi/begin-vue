@@ -60,8 +60,11 @@ if (config.server.https) {
 async function start (wpkCfg) {
   const devPort = await config.computed.getDevPort()
 
-  server.listen(devPort, host, () => {
-    console.log(chalk.gray('server start on: '), chalk.green(`${config.server.https ? 'https' : 'http'}://${host}:${devPort}`))
+  server.listen(devPort, '0.0.0.0', () => {
+    console.log(chalk.gray('server start on: '))
+    host.forEach(h => {
+      console.log(chalk.green(`  ${config.server.https ? 'https' : 'http'}://${h}:${devPort}`))
+    })
   })
 }
 
