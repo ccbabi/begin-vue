@@ -1,6 +1,5 @@
 <template lang="pug">
   div {{ greeter }}
-    img(src="./demo.jpg")
 </template>
 
 <script>

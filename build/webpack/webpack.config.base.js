@@ -40,8 +40,12 @@ module.exports = {
           css: use('', true),
           less: use('less', true),
           stylus: use('stylus', true)
+        },
+        transformToRequire: {
+          audio: 'src',
+          video: 'src',
+          source: 'src'
         }
-
       }
     }, {
       test: /\.(png|jpe?g|gif|svg)(\?.+)?$/,
@@ -55,9 +59,19 @@ module.exports = {
     }, {
       test: /\.(eot|ttf|woff|woff2?)(\?.*)?$/,
       use: [{
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
+          limit: 10000,
           name: 'font/[name].[hash:7].[ext]'
+        }
+      }]
+    }, {
+      test: /\.(mp3|mp4|ogg|wav)(\?.*)?$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'av/[name].[hash:7].[ext]'
         }
       }]
     }]
