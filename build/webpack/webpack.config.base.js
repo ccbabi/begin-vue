@@ -8,7 +8,7 @@ if (env.isProd) {
   // filename = 'js/[name].[chunkhash:7].js'
   filename = 'js/[name].js'
 } else {
-  filename = 'js/[name].[hash:7]'
+  filename = 'js/[name].[hash:7].js'
 }
 
 module.exports = {
@@ -49,16 +49,15 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'images/[name].[ext]?[hash:7]'
+          name: 'images/[name].[hash:7].[ext]'
         }
       }]
     }, {
       test: /\.(eot|ttf|woff|woff2?)(\?.*)?$/,
       use: [{
-        loader: 'url-loader',
+        loader: 'file-loader',
         options: {
-          limit: 10000,
-          name: 'font/[name].[ext]?[hash:7]'
+          name: 'font/[name].[hash:7].[ext]'
         }
       }]
     }]
