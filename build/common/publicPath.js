@@ -3,7 +3,7 @@ function getBasePath () {
   if (document.currentScript) {
     src = document.currentScript.src
   } else {
-    const script = document.querySelectAll('script')
+    const script = document.getElementsByTagName('script')
     if (script.length) {
       src = script[script.length - 1].src
     }
