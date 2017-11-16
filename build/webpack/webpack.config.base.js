@@ -1,20 +1,21 @@
 const { src, nearRoot } = require('../utils/abs')
 const use = require('../common/use')
-const { env } = require('../config')
+// const { env } = require('../config')
 
+/*
 let filename
 
 if (env.isProd) {
-  // filename = 'js/[name].[chunkhash:7].js'
   filename = 'js/[name].js'
 } else {
   filename = 'js/[name].[hash:7].js'
 }
+*/
 
 module.exports = {
   output: {
     path: nearRoot('dist'),
-    filename: filename,
+    filename: 'js/[name].js',
     chunkFilename: 'js/[name].[chunkhash:7].js',
     publicPath: ''
   },
