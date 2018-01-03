@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const empty = require('is-empty')
 const { nearRoot, nearSrc } = require('../utils/abs')
 const { env } = require('../config')
 const win = require(nearRoot('mock/window'))
@@ -11,9 +12,9 @@ module.exports = [
     path: nearRoot('dist'),
     filename: 'index.html',
     template: nearSrc('template/index.ejs'),
-    favicon: nearSrc('image/favicon.ico'),
+    favicon: nearSrc('images/favicon.ico'),
     title: 'begin-vue',
-    window: win,
+    window: empty(win) ? null : win,
     inject: false,
     minify: {
       removeComments: env.isProd
@@ -41,7 +42,7 @@ module.exports = [
     }
   }),
   new CopyWebpackPlugin([{
-    context: 'asset',
+    context: 'assets',
     from: '**/*',
     toType: 'dir'
   }], {
