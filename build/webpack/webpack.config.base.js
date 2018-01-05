@@ -80,7 +80,8 @@ module.exports = {
   resolve: {
     extensions: ['.vue', '.js', '.json', '.styl', '.less', '.css'],
     alias: {
-      '@': src
+      '@': src,
+      vue: 'vue/dist/vue.js'
     }
   },
   performance: {
