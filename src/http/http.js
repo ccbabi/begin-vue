@@ -1,18 +1,8 @@
-import request from '@/common/request'
+import { request } from 'axios-add-jsonp'
+// See doc: https://www.npmjs.com/package/axios-add-jsonp
 
 /*
-// get
-export function getApiXxx (data = {}) {
-  return request('get', '/api/xxx', data)
-}
-
-// post
-export function postApiXxx (data = {}) {
-  return request('post', '/api/xxx', data)
-}
-
-// json
-export function testJsonp (data = {}) {
-  return request('jsonp', 'http://suggest.58.com.cn/home_hotword.do', data)
+export function getApiXxx () {
+  return request.get('/api/xxx')
 }
 */

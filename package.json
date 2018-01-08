@@ -1,6 +1,6 @@
 {
   "name": "begin-vue",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "main": "index.js",
   "repository": "git@github.com:ccbabi/begin-vue.git",
   "author": "kxxw28 <kxxw28@gmail.com>",
@@ -55,10 +55,8 @@
     "clean": "rimraf dist/*"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios-add-jsonp": "^0.0.2",
     "babel-polyfill": "^6.23.0",
-    "jsonp": "^0.2.1",
-    "qs": "^6.5.0",
     "vue": "^2.4.4",
     "vue-router": "^2.7.0",
     "vuex": "^2.4.0"

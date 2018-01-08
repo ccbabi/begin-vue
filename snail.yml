@@ -13,7 +13,7 @@ server:
 
 onOff:
   static: false
-  mock: false
+  mock: true
   proxy: false
 
 static:
