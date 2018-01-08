@@ -6,20 +6,18 @@ const cssLoader = {
   options: {
     importLoaders: 1,
     sourceMap: env.sourceMap,
-    minimize: env.sourceMap
+    minimize: env.isProd
   }
 }
 
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
-    // warning：detect devtool
-    sourceMap: true
+    sourceMap: env.sourceMap
   }
 }
 
 module.exports = function (loader, isVue) {
-  let fallback = 'style-loader'
   const loaders = [cssLoader, postcssLoader]
 
   if (loader) {
@@ -31,16 +29,13 @@ module.exports = function (loader, isVue) {
     })
   }
 
-  if (isVue) {
-    fallback = 'vue-style-loader'
-  }
-
   const options = {
-    fallback,
+    fallback: 'style-loader',
     use: loaders
   }
 
   if (isVue) {
+    options.fallback = 'vue-style-loader'
     options.publicPath = '../'
   }
 
