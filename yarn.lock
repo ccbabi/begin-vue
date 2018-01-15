@@ -215,9 +215,9 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/aws4/download/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-axios-add-jsonp@^0.0.3:
-  version "0.0.3"
-  resolved "http://registry.npm.taobao.org/axios-add-jsonp/download/axios-add-jsonp-0.0.3.tgz#b0ba90d203b919106fc7ec8e38c90c0d45ccf7f4"
+axios-add-jsonp@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/axios-add-jsonp/-/axios-add-jsonp-0.0.4.tgz#bc080133920dc65a7052795aad09976d3a1787ee"
   dependencies:
     axios "^0.17.1"
     es6-promise "^4.2.2"
