@@ -41,14 +41,5 @@ module.exports = [
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
   }),
-  new CopyWebpackPlugin([{
-    context: 'assets',
-    from: '**/*',
-    toType: 'dir'
-  }], {
-    ignore: [
-      'demo.jpg'
-    ]
-  }),
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
