@@ -96,4 +96,5 @@ proxy:
 
 
 ## Upgrade
+v1.7.1 fix rem gen mutil px
 v1.7.0 Support imagemin
