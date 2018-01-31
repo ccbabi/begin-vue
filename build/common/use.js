@@ -31,12 +31,12 @@ module.exports = function (loader, isVue) {
 
   const options = {
     fallback: 'style-loader',
-    use: loaders
+    use: loaders,
+    publicPath: '../'
   }
 
   if (isVue) {
     options.fallback = 'vue-style-loader'
-    options.publicPath = '../'
   }
 
   return ExtractTextPlugin.extract(options)
