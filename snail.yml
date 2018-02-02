@@ -8,7 +8,7 @@ project:
     ## 是否替换掉px
     replace: true
     ## html字体大小
-    rootValue: 37.5
+    rootValue: 75
     ## 保留的精度
     unitPrecision: 5
     ## 要转换的CSS属性
