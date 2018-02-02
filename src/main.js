@@ -6,8 +6,9 @@ import constant from '@/constant'
 import Layout from '@/components/layout'
 import '@/stylesheet'
 
-// 移动端引入
-// import '@/common/flexible'
+if (__isWap) {  // eslint-disable-line no-undef
+  require('@/common/flexible')
+}
 
 Vue.use(http)
 Vue.use(constant)

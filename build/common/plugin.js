@@ -1,10 +1,9 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const empty = require('is-empty')
 const { nearRoot, nearSrc } = require('../utils/abs')
-const { env } = require('../config')
+const { env, project } = require('../config')
 const win = require(nearRoot('mock/window'))
 
 module.exports = [
@@ -39,7 +38,8 @@ module.exports = [
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    }
+    },
+    '__isWap': project.type === 'wap'
   }),
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
