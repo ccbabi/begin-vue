@@ -96,6 +96,7 @@ proxy:
 
 
 ## Upgrade
+v1.8.2 remove imagemin-webpack-plugin
 v1.8.1 fix pxtorem options
 v1.8.0 Support auto px2rem
 v1.7.2 fix publish_path; optimize alias
